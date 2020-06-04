@@ -12,10 +12,24 @@
     <h1>Hello</h1>
     <form>
       <label for="name">名前</label>
-      <input id="name" name="name" />
+      <input id="name" name="name" data-test-id="name" />
       <label for="age">年齢</label>
-      <input id="age" name="age" />
-      <button id="submit" type="button">送信</button>
+      <input id="age" name="age" data-test-id="age" />
+      <button id="submit" data-test-id="submit">送信</button>
+      <p id="result" data-test-id="result"></p>
     </form>
+    <script>
+      const name = document.getElementById('name');
+      const age = document.getElementById('age');
+      const submit = document.getElementById('submit');
+      const result = document.getElementById('result');
+
+      submit.addEventListener('click', onClickSubmit);
+
+      function onClickSubmit(e) {
+        e.preventDefault();
+        result.innerHTML = `name: ${name.value}, age: ${age.value}`;
+      }
+    </script>
   </body>
 </html>
