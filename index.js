@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 
 (async () => {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({ headless: false, slowMo: 500 });
   const page = await browser.newPage();
   await page.goto('http://whatsmyuseragent.org/');
   await page.screenshot({ path: `example.png` });
